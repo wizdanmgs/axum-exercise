@@ -1,3 +1,3 @@
-# axum-exercise
+# axum_exercise
 
 Axum learning progress.
