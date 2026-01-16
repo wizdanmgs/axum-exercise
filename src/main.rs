@@ -1,4 +1,5 @@
 mod app;
+mod error;
 mod logging;
 mod middleware;
 mod routes;

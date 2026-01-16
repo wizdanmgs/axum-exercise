@@ -1,12 +1,18 @@
 use axum::{extract::Query, response::IntoResponse};
 use serde::Deserialize;
+use validator::Validate;
 
-#[derive(Deserialize)]
+use crate::error::ApiError;
+
+#[derive(Deserialize, Debug, Validate)]
 pub struct GreetQuery {
+    #[validate(length(min = 3, message = "name too short"))]
     pub name: Option<String>,
 }
 
-pub async fn greet(Query(query): Query<GreetQuery>) -> impl IntoResponse {
+pub async fn greet(Query(query): Query<GreetQuery>) -> Result<impl IntoResponse, ApiError> {
+    query.validate()?;
+
     let name = query.name.unwrap_or_else(|| "World".to_string());
-    format!("Hello, {}!", name)
+    Ok(format!("Hello, {}!", name))
 }
