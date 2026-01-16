@@ -17,3 +17,4 @@ thiserror = "2"
 
 [dev-dependencies]
 http-body-util = "0.1"
+bytes = "1"

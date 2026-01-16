@@ -74,6 +74,7 @@ name = "axum_exercise"
 version = "0.1.0"
 dependencies = [
  "axum",
+ "bytes",
  "http-body-util",
  "serde",
  "serde_json",
